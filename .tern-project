@@ -1,0 +1,16 @@
+{
+    "libs": [
+        "browser"
+    ],
+    "loadEagerly": [
+        "./node_modules/react/react.js"
+    ],
+    "plugins": {
+        "modules": {},
+        "es_modules": {},
+        "node": {},
+        "node_resolve": {},
+        "document": {},
+        "webpack": {}
+    }
+}
