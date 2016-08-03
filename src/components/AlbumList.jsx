@@ -4,15 +4,15 @@ import Album from './Album';
 import './albumlist.css';
 
 const AlbumList = (props) => {
-    const albums = props.albums.map(album => 
-        <Album key={album.id} album={album} />);
+    const albums = props.albums.map(album =>
+        <Album key={album.id} album={album} getTracks={props.getTracks} />);
 
     if(props.searching) {
-        return <LoadingBar />; 
+        return <LoadingBar />;
     }
     else if(props.albums.length != 0) {
         return(
-            <div className="col-md-4" id="albumlist_sect"> 
+            <div className="col-md-4" id="albumlist_sect">
                 <ul id="albumlist">
                     {albums}
                 </ul>
@@ -31,6 +31,7 @@ AlbumList.propTypes = {
     albums: React.PropTypes.array.isRequired,
     hasSearched: React.PropTypes.bool.isRequired,
     searching: React.PropTypes.bool.isRequired,
+    getTracks: React.PropTypes.func.isRequired,
 };
 
 export default AlbumList;

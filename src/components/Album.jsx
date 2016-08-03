@@ -5,7 +5,9 @@ const Album = (props) => {
     return (
         <li>
             <img
-                src={props.album.images[1].url} />
+                src={props.album.images[1].url} 
+                onClick={() => props.getTracks(props.album.id)}
+            />
             <p className="album_name">{props.album.name}</p>
         </li>
     );
@@ -13,6 +15,7 @@ const Album = (props) => {
 
 Album.propTypes = {
     album: React.PropTypes.object.isRequired,
+    getTracks: React.PropTypes.func.isRequired,
 };
 
 export default Album;
