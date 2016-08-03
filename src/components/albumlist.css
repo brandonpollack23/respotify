@@ -1,0 +1,11 @@
+#albumlist_sect {
+    width: 370;
+    margin-left: 30;
+    text-align: left;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+#albumlist {
+    list-style: none;
+}
