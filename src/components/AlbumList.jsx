@@ -1,17 +1,22 @@
 import React from 'react';
+import LoadingBar from './LoadingBar';
+import Album from './Album';
+import './albumlist.css';
 
 const AlbumList = (props) => {
     const albums = props.albums.map(album => 
-        <li>
-            <img src={album.images[1].url} alt="" /><br/>
-            {album.name}
-        </li>);
+        <Album key={album.id} album={album} />);
 
-    if(props.albums.length != 0) {
+    if(props.searching) {
+        return <LoadingBar />; 
+    }
+    else if(props.albums.length != 0) {
         return(
-            <ul>
-                {albums}
-            </ul>
+            <div className="col-md-4" id="albumlist_sect"> 
+                <ul id="albumlist">
+                    {albums}
+                </ul>
+            </div>
         );
     }
     else if(props.hasSearched) {
@@ -25,6 +30,7 @@ const AlbumList = (props) => {
 AlbumList.propTypes = {
     albums: React.PropTypes.array.isRequired,
     hasSearched: React.PropTypes.bool.isRequired,
+    searching: React.PropTypes.bool.isRequired,
 };
 
 export default AlbumList;

@@ -10,6 +10,7 @@ class App extends React.Component {
         this.state = ({
             albums: [],
             hasSearched: false,
+            searching: false,
         });
         this.getAlbums = this.getAlbums.bind(this);
         this.processAlbums = this.processAlbums.bind(this);
@@ -21,23 +22,37 @@ class App extends React.Component {
     }
 
     processAlbums(payload) {
+        if(payload === false) {
+            this.setState ({
+                searching: false,
+            });
+        };
         this.setState({
             albums: payload.albums.items,
+            searching: false,
         });
     }
 
     hasSearched() {
         this.setState({
-            hasSearched: true
+            hasSearched: true,
+            searching: true,
         });
     }
 
     render() {
         return (
-            <div>
-                <p>Hi</p>
-                <SearchBar getAlbums={this.getAlbums} hasSearched={this.hasSearched} />
-                <AlbumList albums={this.state.albums} hasSearched={this.state.hasSearched} />
+            <div id="searchbar_section">
+                <SearchBar 
+                    id="searchbar"
+                    getAlbums={this.getAlbums}
+                    hasSearched={this.hasSearched}
+                />
+                <AlbumList 
+                    albums={this.state.albums} 
+                    hasSearched={this.state.hasSearched}
+                    searching={this.state.searching} 
+                />
             </div>
         );
     }

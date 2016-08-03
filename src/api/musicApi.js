@@ -5,6 +5,7 @@ function fetch(request, callback) {
         callback(response.data);
     }, reason => {
         console.log("An error occurred with the spotify API!!!");
+        callback(false);
     });
 }
 

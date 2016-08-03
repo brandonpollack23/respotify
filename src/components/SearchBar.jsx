@@ -1,4 +1,5 @@
 import React from 'react';
+import './searchbar.css';
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -23,12 +24,17 @@ class SearchBar extends React.Component {
             if(this.state.searchTerm.length > 0) {
                 this.props.getAlbums(this.state.searchTerm);
             }
-            this.props.hasSearched();
+            this.props.hasSearched(); 
         }
     }
 
     render() {
-        return <input onChange={this.handleInputChange} onKeyPress={this.handleKeyPress} />;
+        return (
+            <div id="searchbar_section">
+                <h3>Search for An Artist</h3>
+                <input id="searchbar" onChange={this.handleInputChange} onKeyPress={this.handleKeyPress} />
+            </div>
+        );
     }
 }
 
