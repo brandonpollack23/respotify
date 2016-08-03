@@ -7,7 +7,7 @@ const TrackList = (props) => {
         <Track key={track.id} track={track} playPreview={props.playPreview}/>);
 
     return (
-        <div id="tracklist" className="col-md-3">
+        <div id="tracklist" className="col-md-4">
             <ul>{tracks}</ul>
         </div>
     );
